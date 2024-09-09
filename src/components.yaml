@@ -1,0 +1,348 @@
+components:
+  schemas:
+    WeatherData:
+      type: object
+      properties:
+        _id:
+          type: object
+          example: "60c90a01a8b1b41870c2bbee"
+        Device Name:
+          type: string
+          example: Noosa_Sensor
+        Precipitation mm/h:
+          type: number
+          example: 10.5
+        Time:
+          type: string
+          format: date-time
+          example: 2024-03-14T00:00:00Z
+        Latitude:
+          type: number
+          format: float
+          example: 51.12345
+        Longitude:
+          type: number
+          format: float
+          example: -0.98765
+        Temperature (°C):
+          type: number
+          example: 25.7
+        Atmospheric Pressure (kPa):
+          type: number
+          example: 101.3
+        Max Wind Speed (m/s):
+          type: number
+          example: 10.2
+        Solar Radiation (W/m2):
+          type: number
+          example: 500
+        Vapor Pressure (kPa):
+          type: number
+          example: 2.3
+        Humidity (%):
+          type: number
+          example: 60
+        Wind Direction (°):
+          type: number
+          example: 180
+    NewWeatherData:
+      type: object
+      properties:
+        # _id:
+        # type: string
+        # example: "60c90a01a8b1b41870c2bbee"
+        deviceName:
+          type: string
+          example: Noosa_Sensor
+        precipitation:
+          type: number
+          example: 10.5
+        time:
+          type: string
+          format: date-time
+          example: 2024-03-14T00:00:00Z
+        latitude:
+          type: number
+          format: float
+          example: 51.12345
+        longitude:
+          type: number
+          format: float
+          example: -0.98765
+        temperature:
+          type: number
+          example: 25.7
+        atmosphericPressure:
+          type: number
+          example: 101.3
+        maxWindSpeed:
+          type: number
+          example: 10.2
+        solarRadiation:
+          type: number
+          example: 500
+        vaporPressure:
+          type: number
+          example: 2.3
+        humidity:
+          type: number
+          example: 60
+        windDirection:
+          type: number
+          example: 180
+    MaxPrecipitationData:
+      type: object
+      properties:
+        maxPrecipitation:
+          type: number
+          example: 3.5
+        readingDateTime:
+          type: string
+          format: date-time
+          example: "2024-03-07T10:00:00.000Z"
+        _id:
+          type: object
+          example: "65f027649250bb7f552f682c"
+        deviceName:
+          type: string
+          example: "Noosa_Sensor"
+    WeatherDataForStationAtDateTime:
+      type: object
+      properties:
+        DeviceName:
+          type: string
+          example: Yandina_Sensor
+        Time:
+          type: string
+          format: date-time
+          example: 2024-03-14T10:00:00.000Z
+        Temperature:
+          type: number
+          example: 15.5
+        AtmosphericPressure:
+          type: number
+          example: 101.3
+        SolarRadiation:
+          type: number
+          example: 200
+        Precipitation:
+          type: number
+          example: 0.5
+    MaxTemperatureData:
+      type: object
+      properties:
+        MaxTemperature:
+          type: number
+          example: 37.17
+        ReadingDateTime:
+          type: string
+          format: date-time
+          example: "2020-07-31T14:00:29.000Z"
+        DeviceName:
+          type: string
+          example: Noosa_Sensor
+    UpdatedWeatherData:
+      type: object
+      properties:
+        PreviousValue:
+          type: number
+          example: 8.5
+          description: Previous precipitation value before the update.
+        UpdatedValue:
+          type: number
+          example: 7.5
+          description: Updated precipitation value after the update.
+        Data:
+          type: object
+          properties:
+            acknowledged:
+              type: boolean
+              example: true
+              description: Indicates if the update was acknowledged.
+            modifiedCount:
+              type: integer
+              example: 1
+              description: Number of documents modified.
+            upsertedId:
+              type: string
+              nullable: true
+              example: null
+              description: ID of the upserted document, if any.
+            upsertedCount:
+              type: integer
+              example: 0
+              description: Number of upserted documents.
+            matchedCount:
+              type: integer
+              example: 1
+              description: Number of documents matched by the update operation.
+    UserData:
+      type: object
+      properties:
+        _id:
+          type: object
+          example: "65f027649250bb7f552f682c"
+        username:
+          type: string
+          example: "john doe"
+        email:
+          type: string
+          example: "john.doe@example.com"
+        password:
+          type: string
+          example: "password123"
+        role:
+          type: string
+          example: "student"
+        lastLogin:
+          oneOf:
+            - type: string
+              format: date-time
+              example: 2024-03-14T10:00:00Z
+            - type: boolean
+        createdAt:
+          type: string
+          format: date-time
+          example: 2024-03-10T10:00:00Z
+    # UserDataNotLogin:
+    #   type: object
+    #   properties:
+    #     _id:
+    #       type: object
+    #       example: "65f027649250bb7f552f682c"
+    #     username:
+    #       type: string
+    #       example: "john doe"
+    #     email:
+    #       type: string
+    #       example: "john.doe@example.com"
+    #     password:
+    #       type: string
+    #       example: "password123"
+    #     role:
+    #       type: string
+    #       example: "student"
+    #     lastLogin:
+    #       type: object
+    #     createdAt:
+    #       type: string
+    #       format: date-time
+    #       example: 2024-03-10T10:00:00Z
+    NewUserData:
+      type: object
+      properties:
+        # _id:
+        #   type: string
+        #   example: "65f027649250bb7f552f682c"
+        username:
+          type: string
+          example: "john doe"
+        email:
+          type: string
+          example: "john.doe@example.com"
+        password:
+          type: string
+          example: "password123"
+        role:
+          type: string
+          example: "student"
+    UpdateUserData:
+      type: object
+      properties:
+        username:
+          type: string
+          example: "john doe"
+        email:
+          type: string
+          example: "john.doe@example.com"
+        password:
+          type: string
+          example: "password123"
+        role:
+          type: string
+          example: "student"
+    UpdatedUser:
+      type: object
+      properties:
+        acknowledged:
+          type: boolean
+          example: true
+        modifiedCount:
+          type: number
+          example: 1
+        upsertedId:
+          type: string
+          example: null
+        upsertedCount:
+          type: number
+          example: 0
+        matchedCount:
+          type: number
+          example: 1
+    UserRegistered:
+      type: object
+      properties:
+        _id:
+          type: object
+          example: "65f027649250bb7f552f682c"
+        username:
+          type: string
+          example: "john doe"
+        email:
+          type: string
+          example: "john.doe@example.com"
+        password:
+          type: string
+          example: "password123"
+        role:
+          type: string
+          example: "student"
+        lastLogin:
+          example: null
+        createdAt:
+          type: string
+          format: date-time
+          example: 2024-03-10T10:00:00Z
+  responses:
+
+  # Auth middleware responses
+    400_authTokenRequired:
+      description: Authentication token is required in the request
+      content:  
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 400
+              message:
+                type: string
+                example: 'Authentication token not provided'
+    401_invalidAuthToken:
+      description: Invalid authorization token
+      content:  
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: 'Invalid authorization token'
+    403_accessForbidden:
+      description: Access forbidden for this role
+      content:  
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 500
+              message:
+                type: string
+                example: 'Access forbidden for this role'
+            
